@@ -19,9 +19,11 @@ f = @(t,u) RHS(u, dx, N, a1, a2, a3);
 function dudt = RHS( u, dx, N, a1, a2, a3)
     
     u = u(:);
+    % center points
     for j = 2:N-1
         uxx(j) = ( u(j+1) - 2*u(j) + u(j-1) )/dx^2;
     end
+    % boundary points
     uxx(1) = ( u(2) - 2*u(1) + u(N) )/dx^2;
     uxx(N) = ( u(1) - 2*u(N) + u(N-1) )/dx^2;
 %     uxx(1) = ( 2*u(N)-u(1) - u(N-1) )/dx^2;
